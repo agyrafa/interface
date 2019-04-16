@@ -1,7 +1,48 @@
-<md-icon md-svg-icon="{{$ctrl.selected.avatar}}" class="avatar"></md-icon>
-<h2>{{$ctrl.selected.name}}</h2>
-<p>{{$ctrl.selected.content}}</p>
+<div ng-if="$ctrl.selected">  
+  <md-tabs md-dynamic-height md-selected="selectedIndex" md-border-bottom="" md-autoselect="" md-swipe-content="false">
+    <md-tab ng-repeat="tab in $ctrl.selected.obj" ng-disabled="tab.disabled" label="{{tab.id}}">
+      <div class="demo-tab">
+        <div>
+          <div class="type">
+            <span>Tipo de atendimento: </span>
+            <md-input-container>
+              <label>Selecione</label>
+              <md-select ng-model="ctrl.userState">
+                <md-option ng-repeat="type in tab.type" ng-value="type">
+                  {{type}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+          <div class="name">
+            <span>Nome do contato: </span>
+            <md-input-container>
+              <label>Selecione</label>
+              <md-select ng-model="ctrl.userState">
+                <md-option ng-repeat="name in tab.name" ng-value="name">
+                  {{name}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+          </div>
 
-<md-button class="md-fab md-fab-bottom-right" ng-click="$ctrl.share($event)" aria-label="Share">
-  <md-icon md-svg-icon="share" ></md-icon>
-</md-button>
+          <md-list class="md-dense" layout="row" flex="" ng-repeat="item in tab.chat">
+            <md-list-item class="md-3-line">
+              <div class="md-list-item-text">
+                <h3>{{ item.send }}</h3>
+              </div>
+            </md-list-item>
+            <md-list-item class="md-3-line">
+              <div class="md-list-item-text">
+                <h3>{{ item.response }}</h3>
+              </div>
+            </md-list-item>
+          </md-list>
+        </div>
+        <!-- <md-button class="md-primary md-raised" ng-click="removeTab( tab )" ng-disabled="tabs.length <= 1">
+          Remove Tab
+        </md-button> -->
+      </div>
+    </md-tab>
+  </md-tabs>
+</div>
