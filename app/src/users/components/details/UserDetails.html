@@ -39,6 +39,19 @@
             </md-list-item>
           </md-list>
         </div>
+        <div layout="row">
+          <md-input-container flex="50">
+            <!-- <label>Client Name</label> -->
+            <input>
+            <div >
+              <div ng-message="required">Campo obrigatório.</div>
+            </div>
+          </md-input-container>
+          <md-button class="md-fab md-mini" aria-label="Seguinte">
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          </md-button>
+        </div>  
+       
         <!-- <md-button class="md-primary md-raised" ng-click="removeTab( tab )" ng-disabled="tabs.length <= 1">
           Remove Tab
         </md-button> -->
